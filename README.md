@@ -20,6 +20,8 @@ from datetime import datetime
 
 from matplotlib import pyplot as plt
 import seaborn
+
+import yaml
 ```
 
 
@@ -31,11 +33,39 @@ analyzer = SentimentIntensityAnalyzer()
 
 
 ```python
+TWITTER_CONFIG_FILE = 'auth.yaml'
+
+with open(TWITTER_CONFIG_FILE, 'r') as config_file:
+    config = yaml.load(config_file)
+    
+print(type(config))
+```
+
+    <class 'dict'>
+    
+
+
+```python
+print(json.dumps(config, indent=4, sort_keys=True))
+```
+
+    {
+        "twitter": {
+            "access_token": "4736047398-p0dCwtJQrffVAvjdsEXRnfbDTwOIosGGdYafIxs",
+            "access_token_secret": "15bmgksONKgbwcEbcJXbtF10hwsgCdtTxy4PPWwIdfHHm",
+            "consumer_key": "c20RxqMSYsckfKYF7rPJEZUcY",
+            "consumer_secret": "HhXs3iIpZwH6jJoqsEP8VMI5RJO1KgFDPR5lCL9V7pNf2kJOr6"
+        }
+    }
+    
+
+
+```python
 # Set up Twitter API keys and authentication
-consumer_key = "c20RxqMSYsckfKYF7rPJEZUcY"
-consumer_secret = "HhXs3iIpZwH6jJoqsEP8VMI5RJO1KgFDPR5lCL9V7pNf2kJOr6"
-access_token = "4736047398-p0dCwtJQrffVAvjdsEXRnfbDTwOIosGGdYafIxs"
-access_token_secret = "15bmgksONKgbwcEbcJXbtF10hwsgCdtTxy4PPWwIdfHHm"
+consumer_key = config["twitter"]["consumer_key"]
+consumer_secret = config["twitter"]["consumer_secret"]
+access_token = config["twitter"]["access_token"]
+access_token_secret = config["twitter"]["access_token_secret"]
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -224,11 +254,11 @@ plt.show()
 ```
 
 
-    <matplotlib.figure.Figure at 0x1864d96c320>
+    <matplotlib.figure.Figure at 0x1be95905c50>
 
 
 
-![png](output_16_1.png)
+![png](output_18_1.png)
 
 
 
@@ -289,5 +319,5 @@ plt.show()
 ```
 
 
-![png](output_17_0.png)
+![png](output_19_0.png)
 
