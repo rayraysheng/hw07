@@ -46,21 +46,6 @@ print(type(config))
 
 
 ```python
-print(json.dumps(config, indent=4, sort_keys=True))
-```
-
-    {
-        "twitter": {
-            "access_token": "4736047398-p0dCwtJQrffVAvjdsEXRnfbDTwOIosGGdYafIxs",
-            "access_token_secret": "15bmgksONKgbwcEbcJXbtF10hwsgCdtTxy4PPWwIdfHHm",
-            "consumer_key": "c20RxqMSYsckfKYF7rPJEZUcY",
-            "consumer_secret": "HhXs3iIpZwH6jJoqsEP8VMI5RJO1KgFDPR5lCL9V7pNf2kJOr6"
-        }
-    }
-    
-
-
-```python
 # Set up Twitter API keys and authentication
 consumer_key = config["twitter"]["consumer_key"]
 consumer_secret = config["twitter"]["consumer_secret"]
@@ -258,7 +243,7 @@ plt.show()
 
 
 
-![png](output_18_1.png)
+![png](output_17_1.png)
 
 
 
@@ -319,5 +304,5 @@ plt.show()
 ```
 
 
-![png](output_19_0.png)
+![png](output_18_0.png)
 
